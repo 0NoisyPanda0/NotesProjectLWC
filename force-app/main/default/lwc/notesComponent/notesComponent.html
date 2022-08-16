@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-16-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="AccountsCombo">
+          <lightning-button label="Generate PDF" onclick={generatePdf} disabled={disablePDF}> </lightning-button>
+        <br/><br/>
+        <template if:true={boolShowSpinner}>
+          <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        <lightning-combobox 
+          label="Accounts" 
+          value={value} 
+          placeholder="Select an account" 
+          options={options} onchange={handleChangedValue}>
+        </lightning-combobox>
+        <lightning-datatable
+          key-field="id"
+          data={arrayNotesTrack}
+          columns={columns}>                
+        </lightning-datatable>
+        <lightning-button label="Previous" onclick={previousHandler} disabled={disablePrevious}></lightning-button>
+        <lightning-button label="Next" onclick={nextHandler} disabled={disableNext}></lightning-button>
+        <p class="slds-text-align_center">Displaying {currentPage} of {totalPage} pages</p>
+    </lightning-card>
+</template>

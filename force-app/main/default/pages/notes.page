@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-16-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page renderAs="pdf" controller="accountforVF" applyHtmlTag="false" showHeader="false" cache="true" readOnly="true">
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+                <style>
+                    @page {
+                    size: a4 portrait;
+                    }            
+                </style>
+            </head>
+            <body>
+                <h1>Account: {!accountsVF.name}</h1>
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <td>Title</td>
+                            <td>Body</td>
+                            <td>Owner Name</td>
+                            <td>Object Type</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!notesVF}" var="note">
+                            <tr>
+                                <td>{!note.title}</td>
+                                <td>{!note.body}</td>
+                                <td>{!note.createdBy.name}</td>
+                                <td>{!note.parent.type}</td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </body>
+        </html>
+</apex:page>
